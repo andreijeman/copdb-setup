@@ -52,7 +52,9 @@ public class SeedService
             {
                 UserName = adminUserName,
                 Email = adminEmail,
-                UserStatus = UserStatus.Active
+                UserStatus = UserStatus.Active,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
             };
 
             var createResult = await _userManager.CreateAsync(admin, adminPassword);

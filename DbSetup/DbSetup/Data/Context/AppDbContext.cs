@@ -27,5 +27,4 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     }
 
     public DbSet<ReferenceBank> ReferenceBanks { get; set; }
-    public DbSet<RefreshToken> RefreshTokens { get; set; }
 }
