@@ -73,21 +73,6 @@ namespace DbSetup.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "refresh_tokens",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    expires_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    value = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    jti = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_refresh_tokens", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "asp_net_role_claims",
                 columns: table => new
                 {
@@ -234,22 +219,6 @@ namespace DbSetup.Data.Migrations
                 table: "asp_net_users",
                 column: "normalized_user_name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "ix_refresh_tokens_jti",
-                table: "refresh_tokens",
-                column: "jti");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_refresh_tokens_user_id_expires_on_utc",
-                table: "refresh_tokens",
-                columns: new[] { "user_id", "expires_on_utc" });
-
-            migrationBuilder.CreateIndex(
-                name: "ix_refresh_tokens_value",
-                table: "refresh_tokens",
-                column: "value",
-                unique: true);
         }
 
         /// <inheritdoc />
@@ -272,9 +241,6 @@ namespace DbSetup.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "reference_banks");
-
-            migrationBuilder.DropTable(
-                name: "refresh_tokens");
 
             migrationBuilder.DropTable(
                 name: "asp_net_roles");

@@ -61,49 +61,6 @@ namespace DbSetup.Data.Migrations
                     b.ToTable("reference_banks", (string)null);
                 });
 
-            modelBuilder.Entity("DbSetup.Data.Entities.RefreshToken", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<DateTime>("ExpiresOnUtc")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("expires_on_utc");
-
-                    b.Property<string>("Jti")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("jti");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("value");
-
-                    b.HasKey("Id")
-                        .HasName("pk_refresh_tokens");
-
-                    b.HasIndex("Jti")
-                        .HasDatabaseName("ix_refresh_tokens_jti");
-
-                    b.HasIndex("Value")
-                        .IsUnique()
-                        .HasDatabaseName("ix_refresh_tokens_value");
-
-                    b.HasIndex("UserId", "ExpiresOnUtc")
-                        .HasDatabaseName("ix_refresh_tokens_user_id_expires_on_utc");
-
-                    b.ToTable("refresh_tokens", (string)null);
-                });
-
             modelBuilder.Entity("DbSetup.Data.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
